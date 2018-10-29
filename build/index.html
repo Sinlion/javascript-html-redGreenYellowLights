@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>网页里的红绿灯</title>
+    <link rel="stylesheet" href="css.css" type="text/css" />
+</head>
+<body>
+    <div id="main" class="main">
+        <div id="town" class="town">
+            <div id="houseNW" class="house"></div>
+            <div id="houseNE" class="house"></div>
+            <div id="houseSW" class="house"></div>
+            <div id="houseSE" class="house"></div>
+            <div id="cross"></div>
+            <div id="roadLineNS"></div>
+            <div id="roadLineEW"></div>
+            <div id="lightN" class="lights">
+                <div class="greenON"></div>
+                <div class="yellowON"></div>
+                <div class="redON"></div>
+            </div>
+            <div id="lightS" class="lights">
+                    <div class="greenON"></div>
+                    <div class="yellowON"></div>
+                    <div class="redON"></div>
+            </div>
+            <div id="lightW" class="lights">
+                    <div class="greenON"></div>
+                    <div class="yellowON"></div>
+                    <div class="redON"></div>
+            </div>
+            <div id="lightE" class="lights">
+                    <div class="greenON"></div>
+                    <div class="yellowON"></div>
+                    <div class="redON"></div>
+            </div>
+        </div>
+        <div class="BT">
+            绿灯时长：<input id="times" value="4" type="text">秒<br>
+            <button  onclick="start()">开 始</button>
+            <button  onclick="stop()">停 止</button>
+        </div>
+    </div>
+</body>
+<script src="js.js"></script>
+</html>

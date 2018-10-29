@@ -1,0 +1,102 @@
+var green=0,yellow=1,red=2,a,b,t;//b 其实可以去掉的  后面虽然引用了  但是没有设计相关事件
+var traffic={};
+traffic.x={};
+traffic.x[green]=[];
+traffic.x[green].push(document.getElementById('lightW').children[green]);
+traffic.x[green].push(document.getElementById('lightE').children[green]);
+traffic.x[yellow]=[];
+traffic.x[yellow].push(document.getElementById('lightW').children[yellow]);
+traffic.x[yellow].push(document.getElementById('lightE').children[yellow]);
+traffic.x[red]=[];
+traffic.x[red].push(document.getElementById('lightW').children[red]);
+traffic.x[red].push(document.getElementById('lightE').children[red]);
+traffic.y={};
+traffic.y[green]=[];
+traffic.y[green].push(document.getElementById('lightN').children[green]);
+traffic.y[green].push(document.getElementById('lightS').children[green]);
+traffic.y[yellow]=[];
+traffic.y[yellow].push(document.getElementById('lightN').children[yellow]);
+traffic.y[yellow].push(document.getElementById('lightS').children[yellow]);
+traffic.y[red]=[];
+traffic.y[red].push(document.getElementById('lightN').children[red]);
+traffic.y[red].push(document.getElementById('lightS').children[red]);
+traffic.pass=function(e){
+    if(e===this.x){
+        this.setbreak(this.y);this.setpass(this.x);
+    }else{
+        this.setbreak(this.x);this.setpass(this.y);
+    }
+}
+traffic.setpass=function(e){
+    e[green][0].className='greenON';
+    e[green][1].className='greenON';
+    e[yellow][0].className='yellowOFF';
+    e[yellow][1].className='yellowOFF';
+    e[red][0].className='redOFF';
+    e[red][1].className='redOFF';
+}
+traffic.setbreak=function(e){
+    e[green][0].className='greenOFF';
+    e[green][1].className='greenOFF';
+    e[yellow][0].className='yellowOFF';
+    e[yellow][1].className='yellowOFF';
+    e[red][0].className='redON';
+    e[red][1].className='redON';
+}
+traffic.greenTime=function(){
+    traffic.timer= window.setTimeout(traffic.greenFlashON,t*1000)
+}
+traffic.greenFlashON=function(){
+    a[green][0].className='greenOFF';
+    a[green][1].className='greenOFF';
+    traffic.timer= window.setTimeout(traffic.greenFlashOFF,700)
+}
+traffic.greenFlashOFF=function(){
+    a[green][0].className='greenON';
+    a[green][1].className='greenON';
+    traffic.timer= window.setTimeout(traffic.yellowTime,1300)
+}
+traffic.yellowTime=function(){
+    a[green][0].className='greenOFF';
+    a[green][1].className='greenOFF';
+    a[yellow][0].className='yellowON';
+    a[yellow][1].className='yellowON';
+    traffic.timer= window.setTimeout(traffic.changeLight,1000)
+}
+traffic.changeLight=function(){
+    if(a===traffic.x){
+        a=traffic.y;
+        b=traffic.x;
+    }else{
+        a=traffic.x;
+        b=traffic.y;
+    }
+    traffic.pass(a);
+    traffic.greenTime();
+}
+traffic.start=function(){
+    this.stop();
+    t=parseInt(document.getElementById('times').value);
+    if(isNaN(t)){t=4;}
+    if(t<2){t=2;}
+    if(t>10){t=10}
+    document.getElementById('times').value=t;
+    a=this.y;
+    b=this.x;
+    this.pass(a);
+    this.greenTime();
+}
+traffic.stop=function(){
+    if(this.hasOwnProperty('timer')){
+        window.clearTimeout(this.timer);
+        delete this.timer;
+    }
+    this.pass(this.y);
+    this.y[green][0].className='greenOFF';
+    this.y[green][1].className='greenOFF';
+    this.x[red][0].className='redOFF';
+    this.x[red][1].className='redOFF';
+}
+traffic.stop();
+function start(){traffic.start()}
+function stop(){traffic.stop()}
