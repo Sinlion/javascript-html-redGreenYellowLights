@@ -12,7 +12,7 @@ css
 #### 安装教程
 
 网页案例，练习教程
-![演示图](https://gitee.com/atchina/traffic/blob/master/gyr2.gif)
+![演示图](https://gitee.com/atchina/traffic/raw/master/gyr2.gif)
 
 #### 使用说明
 
