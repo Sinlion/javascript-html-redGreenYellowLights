@@ -12,11 +12,11 @@ css
 #### 安装教程
 
 网页案例，练习教程
-![演示图](https://gitee.com/atchina/traffic/raw/master/gyr2.gif)
 
 #### 使用说明
 
-无
+![演示图](https://gitee.com/atchina/traffic/raw/master/gyr2.gif)
+
 #### 参与贡献
 
 星星糖老师 @码云
